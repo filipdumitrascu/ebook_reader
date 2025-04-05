@@ -16,7 +16,7 @@
 | D1 | USBLC6-2SC6Y | [Snapeda](https://www.snapeda.com/parts/USBLC6-2SC6Y/STMicroelectronics/view-part/?ref=eda) | [Datasheet](https://www.snapeda.com/parts/USBLC6-2SC6Y/STMicroelectronics/datasheet/) |
 | Condensatoare | CC0402 | [Component Search Engine](https://componentsearchengine.com/part-view/CC0402MRX5R5BB106/YAGEO) | [Datasheet](https://componentsearchengine.com/Datasheets/2/CC0402MRX5R5BB106.pdf)|
 | Q1 | WROVER_SPARKFUN-DISCRETESEMI_MOSFET_PCH-DMG2305UX-7 | [Component Search Engine](https://componentsearchengine.com/part-view/DMG2305UX-7/Diodes%20Incorporated) | [Datasheet](https://www.diodes.com//assets/Datasheets/DMG2305UX.pdf) |
-| D2 | WROVER_AVX---SD0805S020S1R0_AVX_SD0805S020S1R0_0_0AVX_SD0805S020S1R0_0_0 | [Mouser](https://eu.mouser.com/ProductDetail/KYOCERA-AVX/SD0805S020S1R0?qs=jCA%252BPfw4LHbpkAoSnwrdjw%3D%3D) | [Datasheet](https://eu.mouser.com/datasheet/2/40/schottky-3165252.pdf) |
+| D2,7 | WROVER_AVX---SD0805S020S1R0_AVX_SD0805S020S1R0_0_0AVX_SD0805S020S1R0_0_0 | [Mouser](https://eu.mouser.com/ProductDetail/KYOCERA-AVX/SD0805S020S1R0?qs=jCA%252BPfw4LHbpkAoSnwrdjw%3D%3D) | [Datasheet](https://eu.mouser.com/datasheet/2/40/schottky-3165252.pdf) |
 | C3 | RCL_CPOL-EUCT3528 | [Snapeda](https://eu.mouser.com/ProductDetail/KYOCERA-AVX/F910J107MBAAJ6?qs=PqoDHHvF649LraCA%2FjeGXg%3D%3D) | [Datasheet](https://s3.amazonaws.com/snapeda/datasheet/TAJB475K025RNJ_AVX.pdf) |
 | J4 | 112A-TAAR-R03_ATTEND | [Snapeda](https://www.snapeda.com/parts/112A-TAAR-R03/Attend/view-part/) | [Datasheet](https://www.snapeda.com/parts/112A-TAAR-R03/Attend/datasheet/) |
 | U2 | C6-WROOM-1-N8 | [Snapeda](https://www.snapeda.com/parts/ESP32-C6-WROOM-1-N8/Espressif+Systems/view-part/?ref=eda) | [Datasheet](https://www.snapeda.com/parts/ESP32-C6-WROOM-1-N8/Espressif%20Systems/datasheet/) |
@@ -44,7 +44,7 @@
 - **Modulul de incărcare LiPo** gestioneaza incărcarea si protectia bateriei.
 - **Ecranul E-Ink** ofera afisaj cu consum redus de energie.
 
-### 3.2 Conexiuni si specificayii
+### 3.2 Conexiuni si specificatii
 - **ESP32-C6** comunica cu ecranul prin SPI.
 - **Bateria LiPo** se conecteaza prin modulul de incarcare la ESP32-C6.
 - **Planuri de masa** sunt distribuite pe top si bottom pentru reducerea zgomotului electromagnetic.
