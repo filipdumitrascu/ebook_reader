@@ -16,7 +16,7 @@
 | D1 | USBLC6-2SC6Y | [Snapeda](https://www.snapeda.com/parts/USBLC6-2SC6Y/STMicroelectronics/view-part/?ref=eda) | [Datasheet](https://www.snapeda.com/parts/USBLC6-2SC6Y/STMicroelectronics/datasheet/) |
 | Condensatoare | CC0402 | [Component Search Engine](https://componentsearchengine.com/part-view/CC0402MRX5R5BB106/YAGEO) | [Datasheet](https://componentsearchengine.com/Datasheets/2/CC0402MRX5R5BB106.pdf)|
 | Q1 | WROVER_SPARKFUN-DISCRETESEMI_MOSFET_PCH-DMG2305UX-7 | [Component Search Engine](https://componentsearchengine.com/part-view/DMG2305UX-7/Diodes%20Incorporated) | [Datasheet](https://www.diodes.com//assets/Datasheets/DMG2305UX.pdf) |
-| D2,7 | WROVER_AVX---SD0805S020S1R0_AVX_SD0805S020S1R0_0_0AVX_SD0805S020S1R0_0_0 | [Mouser](https://eu.mouser.com/ProductDetail/KYOCERA-AVX/SD0805S020S1R0?qs=jCA%252BPfw4LHbpkAoSnwrdjw%3D%3D) | [Datasheet](https://eu.mouser.com/datasheet/2/40/schottky-3165252.pdf) |
+| D2 | WROVER_AVX---SD0805S020S1R0_AVX_SD0805S020S1R0_0_0AVX_SD0805S020S1R0_0_0 | [Mouser](https://eu.mouser.com/ProductDetail/KYOCERA-AVX/SD0805S020S1R0?qs=jCA%252BPfw4LHbpkAoSnwrdjw%3D%3D) | [Datasheet](https://eu.mouser.com/datasheet/2/40/schottky-3165252.pdf) |
 | C3 | RCL_CPOL-EUCT3528 | [Snapeda](https://eu.mouser.com/ProductDetail/KYOCERA-AVX/F910J107MBAAJ6?qs=PqoDHHvF649LraCA%2FjeGXg%3D%3D) | [Datasheet](https://s3.amazonaws.com/snapeda/datasheet/TAJB475K025RNJ_AVX.pdf) |
 | J4 | 112A-TAAR-R03_ATTEND | [Snapeda](https://www.snapeda.com/parts/112A-TAAR-R03/Attend/view-part/) | [Datasheet](https://www.snapeda.com/parts/112A-TAAR-R03/Attend/datasheet/) |
 | U2 | C6-WROOM-1-N8 | [Snapeda](https://www.snapeda.com/parts/ESP32-C6-WROOM-1-N8/Espressif+Systems/view-part/?ref=eda) | [Datasheet](https://www.snapeda.com/parts/ESP32-C6-WROOM-1-N8/Espressif%20Systems/datasheet/) |
@@ -38,51 +38,86 @@
 
 ## 3. Descrierea functionalitatii hardware
 
-### 3.1 Componente si interfete
-- **ESP32-C6** este creierul sistemului, responsabil pentru procesare și comunicatii.
-- **Regulatorul LDO** asigura stabilizarea tensiunii pentru alimentarea componentelor.
-- **Modulul de incărcare LiPo** gestioneaza incărcarea si protectia bateriei.
-- **Ecranul E-Ink** ofera afisaj cu consum redus de energie.
+### Componente si interfete
+- **ESP32-C6-WROOM-1-N8** este microcontrolerul principal, responsabil cu gestionarea intregului sistem, comunicarea cu senzorii si modulele externe, dar si cu managementul alimentarii.
+  - Arhitectura: 32-bit RISC-V
+  - Frecventa de lucru: 160 MHz
+  - Conectivitate wireless: Wi-Fi 6 (2.4 GHz), Bluetooth 5.0
 
-### 3.2 Conexiuni si specificatii
-- **ESP32-C6** comunica cu ecranul prin SPI.
-- **Bateria LiPo** se conecteaza prin modulul de incarcare la ESP32-C6.
-- **Planuri de masa** sunt distribuite pe top si bottom pentru reducerea zgomotului electromagnetic.
+- **Bateria Li-Po** de 3.7V, 1800mAh asigura alimentarea sistemului in mod portabil.
+- **Circuitul de incarcare** bazat pe MCP73831T gestioneaza incarcarea sigura a bateriei.
+- **Regulatorul LDO** stabilizeaza tensiunea de alimentare la 3.3V pentru toate componentele.
 
-### 3.3 Optimizari si calcule de consum
-- **Rute power** au fost trase cu latime de 0.3 mm pentru stabilitate.
-- **Vias stitching** a fost implementat în jurul ESP32-C6 pentru un plan de masa eficient.
-- **Erori ERC**: S-au acceptat 15 warning-uri conform specificațiilor arhitectului de sistem.
+- **Display-ul E-Ink** de 7.5 inch permite afisarea informatiilor cu un consum minim de energie.
+  - Rezolutie: 800x480 pixeli
+  - Interfata comunicatie: SPI
 
-## 4. Pini utilizați pe ESP32-C6
+- **Modulul SD Card** permite stocarea datelor pe un card MicroSD (FAT32).
+  - Interfata comunicatie: SPI
 
-| Pin ESP32-C6 | Functionalitate | Componenta conectata |
-|-------------|---------------|--------------------|
-| 3 | RESET | Buton/reset circuit |
-| 8 | INT_RTC | Semnal intrerupere RTC | 
-| 9 |32KHZ | Oscilator 32 kHz pentru RTC | 
-| 27 | MISO	Linie | MISO SPI (Master In Slave Out) |
-| 26 | EPD_BUSY | Semnal de stare pentru EPD (E-paper display) |
-| 4 | SS_SD | Chip Select pentru card SD |
-| 5 | EPD_DC | Pin Data/Command pentru EPD |
-| 6 | SCK | Linie de ceas SPI |
-| 7 | MOSI |Linie MOSI SPI (Master Out Slave In) |
-| 15 | IO/BOOT | Buton pentru boot/flash | 
-| 11 | IO10 | General-purpose I/O |
-| 12 | IO11 | General-purpose I/O |
-| 13 | IO12 | General-purpose I/O |
-| 14 | IO13 | General-purpose I/O | 
-| 23 | IO/CHANGE | Semnal de schimbare de stare |
-| 25 | TX | Linie de transmisie UART |
-| 24 | RX | Linie de recepție UART |
-| 16 | RTC_RST | Reset RTC |
-| 17 | I2C_PW | Alimentare pentru I2C |
-| 18 | EPD_3V3_C | Alimentare 3.3V pentru EPD |
-| 19 | SDA | Linie de date I2C |
-| 20 | SCL | Linie de ceas I2C |
-| 21 | EPD_RST | Reset pentru EPD |
+- **Memoria NOR Flash externa** ofera 64MB pentru stocare suplimentara.
+  - Interfata comunicatie: SPI
 
-## 5. Aspecte de design și probleme întâmpinate
+- **Senzorul ambiental BME688** masoara temperatura, umiditatea, presiunea si nivelul gazelor.
+  - Interfata comunicatie: I2C
+
+- **Modulul RTC DS3231SN** mentine ora si data chiar si cand sistemul este oprit.
+  - Interfata comunicatie: I2C
+
+### Conexiuni si specificatii
+- **Conectorul USB-C** permite alimentarea sistemului si transferul de date.
+  - Protectie integrata ESD si dioda Schottky pentru protectie la polaritate inversa.
+
+- **Butoane tactile** utilizate pentru interactiunea utilizatorului.
+
+- **Interfete de comunicatie** folosite:
+  - GPIO: pentru butoane si operatii I/O generale.
+  - SPI: pentru SD Card, memoria NOR Flash si ecranul E-Ink.
+  - I2C: pentru senzorul BME688 si modulul RTC.
+  - UART: pentru debugging si comunicatie seriala.
+  - Wi-Fi & Bluetooth: oferite de ESP32-C6 pentru conectivitate wireless.
+
+## 4.Estimare Consum de Putere
+
+| Componenta                 | Consum Curent (mA) | Tensiune (V) | Putere (mW) |
+|----------------------------|--------------------|--------------|-------------|
+| ESP32-C6 (Wi-Fi activ)     | 200                | 3.3          | 660         |
+| Ecran E-Paper (Actualizare)| 40                 | 3.3          | 132         |
+| Senzor BME688 (Măsurare)   | 3.1                | 3.3          | 10.23       |
+| Modul RTC (Activ)          | 0.15               | 3.3          | 0.495       |
+| Card SD (Activ)            | 50                 | 3.3          | 165         |
+| Memorie NOR Flash externa  | 25                 | 3.3          | 82.5        |
+
+### Consum Total Estimat
+- Curent Total: ~318.5 mA  
+- Tensiune Alimentare: 3.3 V  
+- Putere Totala: 1050.72 mW
+
+## 5. Pini utilizati pe ESP32-C6
+
+| Pin ESP32-C6 | Funcționalitate | Componentă conectată |
+|--------------|-----------------|----------------------|
+| 3            | EPD_BUSY        | Semnal de stare pentru EPD (E-paper display) |
+| 4            | SS_SD           | Chip Select pentru card SD |
+| 5            | EPD_DC          | Pin Data/Command pentru EPD |
+| 6            | SCK             | Linie de ceas SPI comună pentru EPD, SD Card și memorie externa |
+| 7            | MOSI            | Linie MOSI SPI (Master Out Slave In) comuna pentru EPD, SD Card si memorie externa |
+| 2            | MISO            | Linie MISO SPI (Master In Slave Out) comuna pentru SD Card si memorie externa |
+| 10           | CS_EPD          | Chip Select pentru EPD |
+| 11           | CS_FLASH        | Chip Select pentru memorie externă NOR Flash |
+| 23           | EPD_RST         | Reset pentru EPD |
+| 21           | SDA             | Linie de date I2C comună pentru BME688, DS3231 si monitorizare baterie |
+| 22           | SCL             | Linie de ceas I2C comună pentru BME688, DS3231 si monitorizare baterie |
+| 18           | RTC_RST         | Reset pentru modulul RTC (DS3231) |
+| 1            | 32KHZ           | Oscilator 32 kHz pentru RTC |
+| 0            | INT_RTC         | Semnal de intrerupere de la RTC |
+| 9            | BOOT            | Buton pentru boot/flash (input utilizator) |
+| 15           | CHANGE          | Buton pentru schimbare stare/functii (input utilizator) |
+| EN           | RESET           | Buton/reset general pentru sistem |
+| -            | USB-C           | Alimentare si programare prin USB-C (cu protecție ESD și dioda Schottky) |
+
+
+## 6. Aspecte de design si probleme intampinate
 
 - **Schematic**: Componentele au fost pozitionate conform specificatiilor arhitectului de sistem. (am pus inclusiv frame cu nume). Am acceptat 15 warninguri la verificarea erc
 - **PCB 2D**: Am dat split sa obtin forma dorita in specificatii si am plasat componentele pe margini cu masurile primite pentru a ma asigura ca varianta 3d intra in carcasa si mufele sunt aliniate. Am pozitionat si componentele centrale ca in poza din specificatii. Am autorutat mai intai neturile power cu width de 0.3 mm fara trecere prin plan bottom si pe urma neturile neturile normale de 0.15 cu trecere prin plan bottom. Am pus via stitching langa modulul esp si planurile de masa atat pe top cat si pe bottom . Intradevar, sunt foarte multe viasuri puse. Poate o strategie mai buna ar fi fost sa rutez mai intai neturile normale ca sa nu fie spatiu ocupat si sa puna cat mai putine viasuri. Alta varianta ar fi fost sa rutez tot manual. (cam hardcore pentru primul proiect in fusion 360 cu acest dispozitiv un ebook reader destul de complex). Am modificat footprintul pentru piese in care intrau neturi de 0.3 mm fiind mai late decat suporta pinul piesei. In verificarea drc am 2 erori aprobate despre gauri in footprintul unei componente. (greseala a arhitectului de sistem)

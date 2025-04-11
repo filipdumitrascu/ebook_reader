@@ -93,6 +93,19 @@
 <wire x1="6.3" y1="66.4" x2="6.3" y2="48.5" width="0" layer="20"/>
 <wire x1="6.3" y1="48.5" x2="0" y2="48.5" width="0" layer="20"/>
 <wire x1="0" y1="48.5" x2="0" y2="0" width="0" layer="20"/>
+<dimension x1="0.1" y1="111.1" x2="22" y2="111.1" x3="11.05" y3="116" textsize="1.778" layer="1"/>
+<dimension x1="22" y1="110.2" x2="67" y2="110.2" x3="44.5" y3="123" textsize="1.778" layer="1"/>
+<dimension x1="67" y1="111.1" x2="91.580225" y2="111.199434375" x3="79.2582375" y3="119.029359375" textsize="1.778" layer="1"/>
+<dimension x1="92.21159375" y1="111.2" x2="92.212271875" y2="67.2" x3="159.000196875" y3="89.201028125" textsize="1.778" layer="1"/>
+<dimension x1="92.212271875" y1="67.2" x2="170.1" y2="67.3" x3="131.143628125" y3="76.991196875" textsize="1.778" layer="1"/>
+<dimension x1="170.1" y1="67.3" x2="170.2" y2="0.2" x3="192.976478125" y3="33.784015625" textsize="1.778" layer="1"/>
+<dimension x1="170.2" y1="0.2" x2="92" y2="0" x3="131.1308875" y3="-11.976646875" textsize="1.778" layer="1"/>
+<dimension x1="73.9" y1="9.9" x2="73.9" y2="0" x3="78" y3="4.95" textsize="1.778" layer="1"/>
+<dimension x1="92" y1="9.9" x2="73.9" y2="9.9" x3="82.95" y3="-7" textsize="1.778" layer="1"/>
+<dimension x1="73.9" y1="0" x2="0" y2="0" x3="36.95" y3="-12" textsize="1.778" layer="1"/>
+<dimension x1="0" y1="0" x2="0" y2="48.5" x3="-28" y3="24.25" textsize="1.778" layer="1"/>
+<dimension x1="0.1" y1="66.5" x2="0.1" y2="111.1" x3="-28" y3="88.8" textsize="1.778" layer="1"/>
+<dimension x1="6.3" y1="48.5" x2="6.3" y2="66.4" x3="-28" y3="57.45" textsize="1.778" layer="1"/>
 </plain>
 <libraries>
 <library name="DeskAssistant v19 v1" urn="urn:adsk.wipprod:fs.file:vf.SBgXy_1wR4aNMUMMtgJ_Jg">
@@ -605,7 +618,7 @@ Source: http://www.osram.convergy.de/ ... Lb_q993.pdf</description>
 <text x="-0.635" y="-0.635" size="1.27" layer="25" rot="R90">&gt;NAME</text>
 <text x="1.905" y="-0.635" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
 </package>
-<package name="ESP32_WROVER_SPARKFUN-DISCRETESEMI_SOT23-3" library_version="28">
+<package name="ESP32_WROVER_SPARKFUN-DISCRETESEMI_SOT23-3" library_version="16">
 <description>&lt;h3&gt;SOT23-3X&lt;/h3&gt;
 
 &lt;ul&gt;
@@ -1011,7 +1024,7 @@ Source: www.farnell.com/datasheets/49238.pdf</description>
 <class number="2" name="POWER_NETS" width="0.3" drill="0">
 </class>
 </classes>
-<designrules name="jlcpcb-2layers.dru">
+<designrules name="jlcpcb-2layers.dru *">
 <param name="mdWireWire" value="5mil"/>
 <param name="mdWirePad" value="5mil"/>
 <param name="mdWireVia" value="5mil"/>
@@ -3027,10 +3040,7 @@ Source: www.farnell.com/datasheets/49238.pdf</description>
 <wire x1="9.0805" y1="101.177584375" x2="9.0805" y2="91.948" width="0.3" layer="1"/>
 <wire x1="5.7785" y1="89.281" x2="5.72" y2="89.22" width="0.3" layer="1"/>
 <wire x1="9" y1="101.25" x2="9.0805" y2="101.177584375" width="0.3" layer="1"/>
-<wire x1="35.1155" y1="100.0125" x2="41.656" y2="100.0125" width="0.3" layer="1"/>
-<wire x1="41.656" y1="100.0125" x2="48.1965" y2="100.0125" width="0.3" layer="1"/>
-<wire x1="27.4955" y1="107.6325" x2="35.1155" y2="100.0125" width="0.3" layer="1"/>
-<wire x1="48.1965" y1="100.0125" x2="48.31" y2="99.94" width="0.3" layer="1"/>
+<wire x1="27.4955" y1="107.6325" x2="39.656" y2="95.472" width="0.3" layer="1"/>
 <wire x1="27.4955" y1="107.6325" x2="27.38" y2="107.74" width="0.3" layer="1"/>
 <wire x1="35.7505" y1="56.642" x2="35.7505" y2="56.4515" width="0.3" layer="1"/>
 <wire x1="37.592" y1="58.4835" x2="35.7505" y2="56.642" width="0.3" layer="1"/>
@@ -3084,7 +3094,8 @@ Source: www.farnell.com/datasheets/49238.pdf</description>
 <wire x1="118.999" y1="41.91" x2="114.173" y2="46.736" width="0.3" layer="1"/>
 <wire x1="84.328" y1="46.736" x2="84.22" y2="46.78" width="0.3" layer="1"/>
 <wire x1="118.999" y1="41.91" x2="119.15" y2="41.9" width="0.3" layer="1"/>
-<wire x1="41.656" y1="59.4995" x2="41.656" y2="100.0125" width="0.3" layer="1"/>
+<wire x1="41.656" y1="59.4995" x2="41.656" y2="96.4777375" width="0.3" layer="1"/>
+<wire x1="39.656" y1="95.472" x2="39.656" y2="94.4777375" width="0.3" layer="1"/>
 <wire x1="9.017" y1="63.373" x2="9.017" y2="48.8315" width="0.3" layer="1"/>
 <wire x1="7.0485" y1="65.3415" x2="9.017" y2="63.373" width="0.3" layer="1"/>
 <wire x1="7.0485" y1="86.233" x2="7.0485" y2="65.3415" width="0.3" layer="1"/>
@@ -3101,6 +3112,10 @@ Source: www.farnell.com/datasheets/49238.pdf</description>
 <wire x1="7.447" y1="86.6315" x2="7.0485" y2="86.233" width="0.3" layer="1"/>
 <wire x1="6.8847375" y1="89.247" x2="7.447" y2="88.6847375" width="0.3" layer="1"/>
 <wire x1="7.447" y1="88.6847375" x2="7.447" y2="86.6315" width="0.3" layer="1"/>
+<wire x1="48.31" y1="99.94" x2="47.937" y2="99.567" width="0.3" layer="1"/>
+<wire x1="47.937" y1="99.567" x2="44.7452625" y2="99.567" width="0.3" layer="1"/>
+<wire x1="44.7452625" y1="99.567" x2="41.656" y2="96.4777375" width="0.3" layer="1"/>
+<wire x1="39.656" y1="94.4777375" x2="41.656" y2="96.4777375" width="0.3" layer="1"/>
 </signal>
 <signal name="SS_SD" class="1">
 <contactref element="U2" pad="4"/>
@@ -3629,7 +3644,7 @@ Source: www.farnell.com/datasheets/49238.pdf</description>
 <wire x1="47.9425" y1="100.5205" x2="47.498" y2="100.5205" width="0.15" layer="1"/>
 <wire x1="48.26" y1="100.838" x2="47.9425" y2="100.5205" width="0.15" layer="1"/>
 <wire x1="10.414" y1="48.7045" x2="10.362" y2="48.702" width="0.15" layer="1"/>
-<wire x1="48.26" y1="100.838" x2="48.31" y2="100.89" width="0.15" layer="1"/>
+<wire x1="48.31" y1="100.89" x2="48.26" y2="100.838" width="0.15" layer="1"/>
 <wire x1="62.23" y1="109.474" x2="65.659" y2="109.474" width="0.15" layer="1"/>
 <wire x1="65.659" y1="109.474" x2="65.69" y2="109.475" width="0.15" layer="1"/>
 <wire x1="62.23" y1="109.474" x2="62.19" y2="109.475" width="0.15" layer="1"/>
@@ -4002,12 +4017,12 @@ Source: www.farnell.com/datasheets/49238.pdf</description>
 <wire x1="47.244" y1="109.474" x2="46.9265" y2="109.1565" width="0.15" layer="1"/>
 <wire x1="45.6565" y1="109.1565" x2="45.6" y2="109.15" width="0.15" layer="1"/>
 <wire x1="47.244" y1="109.474" x2="47.29" y2="109.475" width="0.15" layer="1"/>
-<wire x1="14.224" y1="68.199" x2="14.224" y2="66.2305" width="0.15" layer="1"/>
-<wire x1="41.148" y1="95.123" x2="14.224" y2="68.199" width="0.15" layer="1"/>
+<wire x1="14.224" y1="66.2305" x2="14.224" y2="68.199" width="0.15" layer="1"/>
+<wire x1="14.224" y1="68.199" x2="41.148" y2="95.123" width="0.15" layer="1"/>
 <wire x1="41.148" y1="104.648" x2="41.148" y2="95.123" width="0.15" layer="16"/>
 <wire x1="44.7675" y1="108.2675" x2="41.148" y2="104.648" width="0.15" layer="16"/>
 <wire x1="45.593" y1="109.093" x2="44.7675" y2="108.2675" width="0.15" layer="1"/>
-<wire x1="14.224" y1="66.2305" x2="14.172" y2="66.202" width="0.15" layer="1"/>
+<wire x1="14.172" y1="66.202" x2="14.224" y2="66.2305" width="0.15" layer="1"/>
 <wire x1="45.593" y1="109.093" x2="45.6" y2="109.15" width="0.15" layer="1"/>
 <wire x1="47.3075" y1="109.474" x2="50.7365" y2="109.474" width="0.15" layer="1"/>
 <wire x1="50.7365" y1="109.474" x2="50.79" y2="109.475" width="0.15" layer="1"/>
