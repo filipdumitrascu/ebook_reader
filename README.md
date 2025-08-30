@@ -2,13 +2,13 @@
 
 ## Contributor: Dumitrașcu Filip-Teodor 333CA
 
-## 1. Diagrama bloc
+## 1. Block diagram
 
 ![alt text](<Images/schema bloc.png>)
 
 ## 2. Bill Of Materials (BOM)
 
-| Nume | Componenta | Link de achizitie | Datasheet |
+| Nume | Component | Link to purchase | Datasheet |
 |------|------------|-------------------|-----------|
 | PFMF.050.1 | VARISTORCN1812 | [Component Search Engine](https://componentsearchengine.com/part-view/VE1812K401R050/KEMET) | [Datasheet](https://content.kemet.com/datasheets/KEM_V0003_VE.pdf) |
 | Rezistente | RR0402 | [Component Search Engine](https://componentsearchengine.com/part-view/R0402%201%25%20100%20K%20(RC0402FR-07100KL)/YAGEO) | [Datasheet](https://content.kemet.com/datasheets/KEM_V0003_VE.pdf)
@@ -36,91 +36,92 @@
 | D6,8,9,10,11,12 | PGB1010603MR | [Snapeda](https://www.snapeda.com/parts/PGB1010603MR/Littelfuse/view-part/?ref=eda) | [Datasheet](https://www.snapeda.com/parts/PGB1010603MR/Littelfuse%20Inc./datasheet/) |
 | U1 | W25Q512JVEIQ | [Snapeda](https://www.snapeda.com/parts/W25Q512JVEIQ/Winbond+Electronics/view-part/?ref=eda) | [Datasheet](https://www.snapeda.com/parts/W25Q512JVEIQ/Winbond%20Electronics/datasheet/) |
 
-## 3. Descrierea functionalitatii hardware
+## 3. Hardware functionality description
 
-### Componente si interfete
-- **ESP32-C6-WROOM-1-N8** este microcontrolerul principal, responsabil cu gestionarea intregului sistem, comunicarea cu senzorii si modulele externe, dar si cu managementul alimentarii.
-  - Arhitectura: 32-bit RISC-V
-  - Frecventa de lucru: 160 MHz
-  - Conectivitate wireless: Wi-Fi 6 (2.4 GHz), Bluetooth 5.0
+### Components and interfaces
+- **ESP32-C6-WROOM-1-N8** is the main microcontroller, responsible for managing the entire system, communicating with sensors and external modules, as well as power management.
+  - Architecture: 32-bit RISC-V
+  - Operating frequency: 160 MHz
+  - Wireless connectivity: Wi-Fi 6 (2.4 GHz), Bluetooth 5.0
 
-- **Bateria Li-Po** de 3.7V, 1800mAh asigura alimentarea sistemului in mod portabil.
-- **Circuitul de incarcare** bazat pe MCP73831T gestioneaza incarcarea sigura a bateriei.
-- **Regulatorul LDO** stabilizeaza tensiunea de alimentare la 3.3V pentru toate componentele.
+- The 3.7V, 1800mAh **Li-Po battery** provides portable power to the system.
+- The MCP73831T-based charging circuit manages safe battery charging.
+- The LDO regulator stabilizes the supply voltage at 3.3V for all components.
 
-- **Display-ul E-Ink** de 7.5 inch permite afisarea informatiilor cu un consum minim de energie.
-  - Rezolutie: 800x480 pixeli
-  - Interfata comunicatie: SPI
+- The 7.5-inch E-Ink display allows information to be displayed with minimal power consumption.
+  - Resolution: 800x480 pixels
+  - Communication interface: SPI
 
-- **Modulul SD Card** permite stocarea datelor pe un card MicroSD (FAT32).
-  - Interfata comunicatie: SPI
+- **SD Card Module** allows data storage on a MicroSD card (FAT32).
+  - Communication interface: SPI
 
-- **Memoria NOR Flash externa** ofera 64MB pentru stocare suplimentara.
-  - Interfata comunicatie: SPI
+- **External NOR Flash memory** provides 64MB for additional storage.
+  - Communication interface: SPI
 
-- **Senzorul ambiental BME688** masoara temperatura, umiditatea, presiunea si nivelul gazelor.
-  - Interfata comunicatie: I2C
+- **BME688 ambient sensor** measures temperature, humidity, pressure, and gas levels.
+  - Communication interface: I2C
 
-- **Modulul RTC DS3231SN** mentine ora si data chiar si cand sistemul este oprit.
-  - Interfata comunicatie: I2C
+- **The DS3231SN RTC module** keeps track of time and date even when the system is turned off.
+  - Communication interface: I2C
 
-### Conexiuni si specificatii
-- **Conectorul USB-C** permite alimentarea sistemului si transferul de date.
-  - Protectie integrata ESD si dioda Schottky pentru protectie la polaritate inversa.
+### Connections and specifications
+- **The USB-C connector** allows for system power and data transfer.
+  - Integrated ESD protection and Schottky diode for reverse polarity protection.
 
-- **Butoane tactile** utilizate pentru interactiunea utilizatorului.
+- **Touch buttons** used for user interaction.
 
-- **Interfete de comunicatie** folosite:
-  - GPIO: pentru butoane si operatii I/O generale.
-  - SPI: pentru SD Card, memoria NOR Flash si ecranul E-Ink.
-  - I2C: pentru senzorul BME688 si modulul RTC.
-  - UART: pentru debugging si comunicatie seriala.
-  - Wi-Fi & Bluetooth: oferite de ESP32-C6 pentru conectivitate wireless.
+- **Communication interfaces** used:
+- GPIO: for buttons and general I/O operations.
+  - SPI: for SD Card, NOR Flash memory, and E-Ink display.
+  - I2C: for BME688 sensor and RTC module.
+  - UART: for debugging and serial communication.
+  - Wi-Fi & Bluetooth: provided by ESP32-C6 for wireless connectivity.
 
-## 4.Estimare Consum de Putere
+## 4. Power Consumption Estimate
 
-| Componenta                 | Consum Curent (mA) | Tensiune (V) | Putere (mW) |
-|----------------------------|--------------------|--------------|-------------|
-| ESP32-C6 (Wi-Fi activ)     | 200                | 3.3          | 660         |
-| Ecran E-Paper (Actualizare)| 40                 | 3.3          | 132         |
-| Senzor BME688 (Măsurare)   | 3.1                | 3.3          | 10.23       |
-| Modul RTC (Activ)          | 0.15               | 3.3          | 0.495       |
-| Card SD (Activ)            | 50                 | 3.3          | 165         |
-| Memorie NOR Flash externa  | 25                 | 3.3          | 82.5        |
-
-### Consum Total Estimat
-- Curent Total: ~318.5 mA  
-- Tensiune Alimentare: 3.3 V  
-- Putere Totala: 1050.72 mW
-
-## 5. Pini utilizati pe ESP32-C6
-
-| Pin ESP32-C6 | Funcționalitate | Componentă conectată |
-|--------------|-----------------|----------------------|
-| 3            | EPD_BUSY        | Semnal de stare pentru EPD (E-paper display) |
-| 4            | SS_SD           | Chip Select pentru card SD |
-| 5            | EPD_DC          | Pin Data/Command pentru EPD |
-| 6            | SCK             | Linie de ceas SPI comună pentru EPD, SD Card și memorie externa |
-| 7            | MOSI            | Linie MOSI SPI (Master Out Slave In) comuna pentru EPD, SD Card si memorie externa |
-| 2            | MISO            | Linie MISO SPI (Master In Slave Out) comuna pentru SD Card si memorie externa |
-| 10           | CS_EPD          | Chip Select pentru EPD |
-| 11           | CS_FLASH        | Chip Select pentru memorie externă NOR Flash |
-| 23           | EPD_RST         | Reset pentru EPD |
-| 21           | SDA             | Linie de date I2C comună pentru BME688, DS3231 si monitorizare baterie |
-| 22           | SCL             | Linie de ceas I2C comună pentru BME688, DS3231 si monitorizare baterie |
-| 18           | RTC_RST         | Reset pentru modulul RTC (DS3231) |
-| 1            | 32KHZ           | Oscilator 32 kHz pentru RTC |
-| 0            | INT_RTC         | Semnal de intrerupere de la RTC |
-| 9            | BOOT            | Buton pentru boot/flash (input utilizator) |
-| 15           | CHANGE          | Buton pentru schimbare stare/functii (input utilizator) |
-| EN           | RESET           | Buton/reset general pentru sistem |
-| -            | USB-C           | Alimentare si programare prin USB-C (cu protecție ESD și dioda Schottky) |
+| Component                   | Current (mA) | Voltage (V) | Power (mW) |
+|-----------------------------|--------------|-------------|------------|
+| ESP32-C6 (Wi-Fi active)     | 200          | 3.3         | 660        |
+| E-Paper Display (Refresh)   | 40           | 3.3         | 132        |
+| BME688 Sensor (Measurement) | 3.1          | 3.3         | 10.23      |
+| RTC Module (Active)         | 0.15         | 3.3         | 0.495      |
+| SD Card (Active)            | 50           | 3.3         | 165        |
+| External NOR Flash Memory   | 25           | 3.3         | 82.5       |
 
 
-## 6. Aspecte de design si probleme intampinate
+### Estimated Total Consumption
+- Total Current: ~318.5 mA  
+- Supply Voltage: 3.3 V  
+- Total Power: 1050.72 mW
 
-- **Schematic**: Componentele au fost pozitionate conform specificatiilor arhitectului de sistem. (am pus inclusiv frame cu nume). Am acceptat 15 warninguri la verificarea erc
-- **PCB 2D**: Am dat split sa obtin forma dorita in specificatii si am plasat componentele pe margini cu masurile primite pentru a ma asigura ca varianta 3d intra in carcasa si mufele sunt aliniate. Am pozitionat si componentele centrale ca in poza din specificatii. Am autorutat mai intai neturile power cu width de 0.3 mm fara trecere prin plan bottom si pe urma neturile neturile normale de 0.15 cu trecere prin plan bottom. Am pus via stitching langa modulul esp si planurile de masa atat pe top cat si pe bottom . Intradevar, sunt foarte multe viasuri puse. Poate o strategie mai buna ar fi fost sa rutez mai intai neturile normale ca sa nu fie spatiu ocupat si sa puna cat mai putine viasuri. Alta varianta ar fi fost sa rutez tot manual. (cam hardcore pentru primul proiect in fusion 360 cu acest dispozitiv un ebook reader destul de complex). Am modificat footprintul pentru piese in care intrau neturi de 0.3 mm fiind mai late decat suporta pinul piesei. In verificarea drc am 2 erori aprobate despre gauri in footprintul unei componente. (greseala a arhitectului de sistem)
-- **PCB 3D**: Am downloadat step fielul si uploadat pentru fiecare componenta astfel incat sa aiba reprezentare in 3d. Test padurile sunt facute custom. Am plasat pcbul in carcasa primita de la arhitectul de sistem. Tin sa precizez ca dimensiunea de 15.30mm fata de coltul stanga sus (cu originea in coltul stanga jos) plaseaza sd cardu mai jos fata de gaura data in carcasa. Am ales sa mut gaura carcasei pentru a rezolva problema (decat sa schimb rute, replasez sd carsd si alte pushuri spre 3d)
-- **Baterie, display**: Am facut o baterie si un ecram custom (am mai invatat fusion decat sa le iau step fileul de pe net) cu precizarea ca lipsesc firele de conexiune (cam mult pentru un prim proiect fusion). Dimensiuniile si componentele lor sunt luate din datasheeturile aferente.
-- **Bom, PcP** Am generat de la manufacturing bom, pick and place si gerbers aferente pcbului. 
+## 5. Pins used on ESP32-C6
+
+| ESP32-C6 Pin | Functionality | Connected Component |
+|--------------|----------------|----------------------|
+| 3            | EPD_BUSY        | Status signal for EPD (E-paper display) |
+| 4            | SS_SD           | Chip Select for SD card |
+| 5            | EPD_DC          | Data/Command pin for EPD |
+| 6            | SCK             | Common SPI clock line for EPD, SD Card, and external memory |
+| 7            | MOSI            | Common SPI MOSI (Master Out Slave In) line for EPD, SD Card, and external memory |
+| 2            | MISO            | Common SPI MISO (Master In Slave Out) line for SD Card and external memory |
+| 10           | CS_EPD          | Chip Select for EPD |
+| 11           | CS_FLASH        | Chip Select for external NOR Flash memory |
+| 23           | EPD_RST         | Reset for EPD |
+| 21           | SDA             | Common I2C data line for BME688, DS3231 and battery monitoring |
+| 22           | SCL             | Common I2C clock line for BME688, DS3231, and battery monitoring |
+| 18           | RTC_RST         | Reset for RTC module (DS3231) |
+| 1            | 32KHZ           | 32 kHz oscillator for RTC |
+| 0            | INT_RTC         | Interrupt signal from RTC |
+| 9            | BOOT            | Boot/flash button (user input) |
+| 15           | CHANGE          | Button for changing status/functions (user input) |
+| EN           | RESET           | General reset button for the system |
+| -            | USB-C           | Power supply and programming via USB-C (with ESD protection and Schottky diode) |
+
+
+## 6. Design aspects and issues encountered
+
+- **Schematic**: Components were positioned according to the system architect's specifications. (I also added frames with names). I accepted 15 warnings when checking the erc
+- **PCB 2D**: I split it to get the desired shape in the specifications and placed the components on the edges with the measurements received to ensure that the 3D version fits into the case and the connectors are aligned. I also positioned the central components as in the picture in the specifications. I first autorouted the power nets with a width of 0.3 mm without passing through the bottom plane and then the normal nets of 0.15 with passage through the bottom plane. I placed via stitching near the esp module and the ground planes on both the top and bottom. Indeed, there are a lot of vias placed. Perhaps a better strategy would have been to route the normal nets first so as not to take up space and to place as few vias as possible. Another option would have been to route everything manually. (A bit hardcore for my first project in Fusion 360 with this device, a fairly complex ebook reader). I modified the footprint for parts that had 0.3 mm nets, which were wider than the part pin could support. In the DRC check, I have two approved errors about holes in the footprint of a component. (system architect's mistake)
+- **3D PCB**: I downloaded the STEP file and uploaded it for each component so that it would have a 3D representation. The test pads are custom made. I placed the PCB in the case I received from the system architect. I would like to point out that the 15.30mm dimension from the top left corner (with the origin in the bottom left corner) places the SD card below the hole in the case. I chose to move the hole in the case to solve the problem (rather than changing routes, repositioning the SD card, and other 3D pushes).
+- **Battery, display**: I made a custom battery and screen (I learned Fusion rather than taking the step file from the internet), noting that the connection wires are missing (a bit much for a first Fusion project). Their dimensions and components are taken from the relevant datasheets.
+- **Bom, PcP** I generated the bom, pick and place, and gerbers for the pcb from manufacturing.
